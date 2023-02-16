@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void sort_vertical(int **matrix, int n, int m, int ***result_matrix, int *buf_arr);
-void sort_horizontal(int **matrix, int n, int m, int ***result_matrix, int *buf_arr);
+void sort_vertical(int n, int m, int ***result_matrix, int *buf_arr);
+void sort_horizontal(int n, int m, int ***result_matrix, int *buf_arr);
 int input(int ***matrix, int *n, int *m, int ***result);
 void output(int **matrix, int n, int m);
 
 int main() {
     int **matrix, **result;
-        int *buf_arr;
+    int *buf_arr;
     int n, m;
     int det = input(&matrix, &n, &m, &result);
     if (det == 1) {
@@ -22,8 +22,6 @@ int main() {
         return 1;
     }
 
-
-
     buf_arr = (int *)malloc((n * m) * sizeof(int));
     int c = 0;
     for (int i = 0; i < n; i++) {
@@ -33,10 +31,11 @@ int main() {
         }
     }
 
-    sort_vertical(matrix, n, m, &result, buf_arr);
+    sort_vertical(n, m, &result, buf_arr);
     output(result, n, m);
 
-    sort_horizontal(matrix, n, m, &result, buf_arr);
+    sort_horizontal(n, m, &result, buf_arr);
+    printf("\n");
     printf("\n");
     output(result, n, m);
 
@@ -102,7 +101,7 @@ void output(int **matrix, int n, int m) {
     }
 }
 
-void sort_vertical(int **matrix, int n, int m, int ***result_matrix, int *buf_arr) {
+void sort_vertical(int n, int m, int ***result_matrix, int *buf_arr) {
     for (int i = 0; i < n * m; i++) {
         for (int j = i + 1; j < n * m; j++) {
             if (buf_arr[j] < buf_arr[i]) {
@@ -129,7 +128,7 @@ void sort_vertical(int **matrix, int n, int m, int ***result_matrix, int *buf_ar
     }
 }
 
-void sort_horizontal(int **matrix, int n, int m, int ***result_matrix, int *buf_arr) {
+void sort_horizontal(int n, int m, int ***result_matrix, int *buf_arr) {
     for (int i = 0; i < n * m; i++) {
         for (int j = i + 1; j < n * m; j++) {
             if (buf_arr[j] < buf_arr[i]) {

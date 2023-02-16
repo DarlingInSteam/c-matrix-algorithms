@@ -25,7 +25,7 @@ int main() {
 
     for (int i = 0; i < size_arr_first; i++) free(matrix[i]);
     free(matrix);
-    printf("\n%.6lf\n", q);
+    printf("%.6lf", q);
 }
 
 void getMatrixWithoutRowAndCol(double **matrix, int size, int row, int col, double **newMatrix) {

@@ -24,7 +24,7 @@ int main() {
     double q = matrixDet(matrix, size_arr_first);
 
     for (int i = 0; i < size_arr_first; i++) free(matrix[i]);
-        free(matrix);
+    free(matrix);
     printf("\n%.6lf\n", q);
 }
 

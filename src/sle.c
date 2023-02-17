@@ -35,23 +35,25 @@ int main() {
     }
     square(matrix, size_arr_first, res);
     double q = matrixDet(matrix, size_arr_first);
-    if (q != 0) {
-        for (int i = 0; i < size_arr_first; i++) {
-            double ans;
-            square(matrix, size_arr_first, res);
-            cramer(matrix, size_arr_first, res, i);
-            ans = matrixDet(res, size_arr_first) / q;
+    
+        if (q != 0) {
+            for (int i = 0; i < size_arr_first; i++) {
+                double ans;
+                square(matrix, size_arr_first, res);
+                cramer(matrix, size_arr_first, res, i);
+                ans = matrixDet(res, size_arr_first) / q;
 
-            if (i != size_arr_first - 1) {
-                printf("%.6lf ", ans);
-            } else {
-                printf("%.6lf", ans);
+                if (i != size_arr_first - 1) {
+                    printf("%.6lf ", ans);
+                } else {
+                    printf("%.6lf", ans);
+                }
             }
-        }
 
-    } else {
-        printf("n/a");
-    }
+        } else {
+            printf("n/a");
+        }
+    
     for (int i = 0; i < size_arr_first; i++) free(matrix[i]);
     free(matrix);
     for (int i = 0; i < size_arr_first; i++) free(res[i]);
@@ -115,6 +117,8 @@ int input(double ***matrix, int *n, int *m) {
     if (scanf("%d %d", n, m) != 2 || *n <= 0 || *m <= 0) {
         return 1;
     }
+
+    if (*n + 1 != *m) return 1; 
 
     (*matrix) = malloc(*n * sizeof(double *));
 

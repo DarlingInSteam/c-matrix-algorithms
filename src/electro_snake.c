@@ -47,8 +47,7 @@ int main() {
 }
 
 int input(int ***matrix, int *n, int *m, int ***result) {
-    char ch1, ch2;
-    if (scanf("%d%c %d%c", n, &ch1, m, &ch2) != 4 || ch1 != ' ' || ch2 != '\n' || *n <= 0 || *m <= 0) {
+    if (scanf("%d %d", n, m) != 2 || *n <= 0 || *m <= 0) {
         return 1;
     }
 
@@ -65,11 +64,6 @@ int input(int ***matrix, int *n, int *m, int ***result) {
                 return 2;
             }
             (*matrix)[i][j] = l;
-        }
-
-        char ch2;
-        if (scanf("%c", &ch2) != 1 || ch2 != '\n') {
-            return 2;
         }
     }
 
@@ -112,15 +106,15 @@ void sort_vertical(int n, int m, int ***result_matrix, int *buf_arr) {
         }
     }
     int c = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < m; i++) {
         if (i % 2 == 0) {
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < n; j++) {
                 (*result_matrix)[j][i] = buf_arr[c];
                 c += 1;
             }
         }
         if (i % 2 == 1) {
-            for (int j = m - 1; j >= 0; j--) {
+            for (int j = n - 1; j >= 0; j--) {
                 (*result_matrix)[j][i] = buf_arr[c];
                 c += 1;
             }

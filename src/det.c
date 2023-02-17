@@ -82,8 +82,7 @@ double matrixDet(double **matrix, int size) {
 }
 
 int input(double ***matrix, int *n, int *m) {
-    char ch1, ch2;
-    if (scanf("%d%c %d%c", n, &ch1, m, &ch2) != 4 || ch1 != ' ' || ch2 != '\n' || *n <= 0 || *m <= 0) {
+    if (scanf("%d %d", n, m) != 2 || *n <= 0 || *m <= 0) {
         return 1;
     }
 
@@ -100,11 +99,6 @@ int input(double ***matrix, int *n, int *m) {
                 return 2;
             }
             (*matrix)[i][j] = l;
-        }
-
-        char ch2;
-        if (scanf("%c", &ch2) != 1 || ch2 != '\n') {
-            return 2;
         }
     }
 
